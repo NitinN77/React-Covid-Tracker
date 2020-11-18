@@ -30,7 +30,7 @@ function Navbar() {
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             COVID TRACKER 
-            <i class='fa fa-typo3' />
+            <i className='fa fa-typo3' />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fa fa-times' : 'fa fa-bars'} />

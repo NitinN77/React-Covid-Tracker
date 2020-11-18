@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    width: 50%;
+}
+
+
+@media (max-width: 770px) {
+    .container{
+        width: 100%;
+    }
+}

@@ -16,7 +16,7 @@ function Cards({ data: {confirmed, recovered, deaths, lastUpdate }}) {
                 <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
-                            Infected
+                           Total Infected
                         </Typography>
                         <Typography variant="h5">
                             <CountUp 
@@ -31,7 +31,7 @@ function Cards({ data: {confirmed, recovered, deaths, lastUpdate }}) {
                 <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.recovered)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
-                            Recovered
+                        Total Recovered
                         </Typography>
                         <Typography variant="h5">
                             <CountUp 
@@ -46,7 +46,7 @@ function Cards({ data: {confirmed, recovered, deaths, lastUpdate }}) {
                 <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.deaths)}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
-                            Deaths
+                        Total Deaths
                         </Typography>
                         <Typography variant="h5">
                             <CountUp 
