@@ -62,9 +62,25 @@ export const fetchIData = async () => {
             recovered: dailyData.dailyrecovered,
             date: dailyData.date,
         }));
-        console.log(ts);
         return ts;
 
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+
+export const fetchStateData = async () => {
+    try {
+        let url = `${iurl}/data.json`;
+        const { data: {statewise}} = await axios.get(url);
+        let modifiedData = statewise.map((state) => ({
+            name: state.state,
+            active: state.active,
+            confirmed: state.confirmed,
+            deaths: state.deaths,
+        }))
+        return modifiedData;
     } catch (error) {
         console.log(error.message);
     }

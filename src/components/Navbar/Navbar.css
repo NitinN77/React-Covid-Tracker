@@ -117,7 +117,7 @@
     .navbar-logo {
       position: absolute;
       top: 0;
-      left: 0;
+      left: auto;
       transform: translate(25%, 50%);
     }
   

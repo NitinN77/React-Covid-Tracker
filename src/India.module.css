@@ -1,11 +1,29 @@
 .container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50%;
 }
 
+.card {
+    width: 40%;
+    padding: 10px;
+    margin: 1% 1% !important;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+}
+
+.nationalform {
+    height: 455px !important;
+}
 
 @media (max-width: 770px) {
     .container{
         width: 100%;
+    }
+    .card {
+        width: 100%;
+
+        margin: 6% 0 !important;
     }
 }

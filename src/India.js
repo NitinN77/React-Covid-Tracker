@@ -1,30 +1,37 @@
 import React,{ useState, useEffect } from 'react'
 import styles from './India.module.css';
-import { fetchIData,fetchData } from './api'
+import { fetchIData, fetchData, fetchStateData, fetchStates } from './api'
 import { Line } from 'react-chartjs-2';
-import { Grid } from '@material-ui/core';
+import { Grid, Card, CardContent, Icon } from '@material-ui/core';
 import Cards from './components/Cards/Cards';
+import StatePicker from './components/StatePicker/StatePicker';
+import cx from 'classnames';
 
 function India() {
 
     const [IData, setIData] = useState([]);
     const [ICardData, setICardData] = useState([]);
+    const [stateData, setStateData] = useState([]);
+    const [cstate, setCstate] = useState('');
+
+    console.log(stateData.filter((state) => state.name === cstate));
+
 
     useEffect(() => {
         const fetchAPI = async () => {
             setIData(await fetchIData());
-        }
-        const ICards = async () => {
-            const fetchedData = await fetchData('india');
-            setICardData(fetchedData);
-        }
-        ICards();
+            setICardData(await fetchData('india'));
+            setStateData(await fetchStateData());
+        }   
+
         fetchAPI();
+
     }, []);
 
+    const handleStateChange = async (cstate) => {
+        setCstate(cstate);
+    }
     
-    
-
     const active_lineChart = (
         IData.length ? 
         (
@@ -80,20 +87,41 @@ function India() {
     );
 
     return (
-        <Grid container>
-            <Grid item className={styles.container}>
-                {active_lineChart}
+        <div>
+            <Grid container className={styles.container}>
+                <Grid item  className={styles.card}>
+                    <CardContent>
+                    <h1>Daily Cases</h1>
+                    {active_lineChart}
+                    </CardContent>
+                </Grid>
+                <Grid item  className={styles.card}>
+                    <CardContent>
+                    <h1>Daily Deaths</h1>
+                    {deaths_lineChart}
+                    </CardContent>
+                </Grid>
+                <Grid item  className={styles.card}>
+                    <CardContent>
+                    <h1>Daily Recovered</h1>
+                    {recovered_lineChart}
+                    </CardContent>
+                </Grid>
+                <Grid item className={cx(styles.card,styles.nationalform)}>
+                    <CardContent>
+                    <h1>National Statistics</h1>
+                    <Cards data={ICardData} />
+                    </CardContent>
+                </Grid>
+                <Grid item className={styles.card}>
+                    <CardContent>
+                        <h1>State-Wise Data</h1>
+                        <StatePicker handleStateChange={handleStateChange}/>
+                    </CardContent>
+                </Grid>
             </Grid>
-            <Grid item className={styles.container}>
-                {deaths_lineChart}
-            </Grid>
-            <Grid item className={styles.container}>
-                {recovered_lineChart}
-            </Grid>
-            <Grid item className={styles.container}>
-                <Cards data={ICardData}/>
-            </Grid>
-        </Grid>
+            
+        </div>
     );
 }
 
