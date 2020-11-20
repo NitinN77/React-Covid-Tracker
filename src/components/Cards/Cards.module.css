@@ -20,6 +20,10 @@
     border-bottom: 10px solid rgba(0, 0, 0, 0.5);
 }
 
+.active {
+    border-bottom: 10px solid rgba(238, 0, 0, 1);
+}
+
 @media (max-width: 770px) {
     .container {
         padding-right: 85px;

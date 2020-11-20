@@ -21,6 +21,7 @@ class Global extends Component {
 
     handleCountryChange = async (country) => {
         const fetchedData = await fetchData(country);
+        console.log('global ',fetchedData);
         this.setState({data: fetchedData, country: country});
     }
 

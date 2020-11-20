@@ -4,6 +4,7 @@ import { fetchIData, fetchData, fetchStateData, fetchStates } from './api'
 import { Line } from 'react-chartjs-2';
 import { Grid, Card, CardContent, Icon } from '@material-ui/core';
 import Cards from './components/Cards/Cards';
+import StateCards from './components/Cards/StateCards';
 import StatePicker from './components/StatePicker/StatePicker';
 import cx from 'classnames';
 
@@ -12,10 +13,7 @@ function India() {
     const [IData, setIData] = useState([]);
     const [ICardData, setICardData] = useState([]);
     const [stateData, setStateData] = useState([]);
-    const [cstate, setCstate] = useState('');
-
-    console.log(stateData.filter((state) => state.name === cstate));
-
+    const [cstate, setCstate] = useState('Tamil Nadu');
 
     useEffect(() => {
         const fetchAPI = async () => {
@@ -23,7 +21,6 @@ function India() {
             setICardData(await fetchData('india'));
             setStateData(await fetchStateData());
         }   
-
         fetchAPI();
 
     }, []);
@@ -117,6 +114,7 @@ function India() {
                     <CardContent>
                         <h1>State-Wise Data</h1>
                         <StatePicker handleStateChange={handleStateChange}/>
+                        <StateCards data={stateData.filter((state) => state.name === cstate)}/>
                     </CardContent>
                 </Grid>
             </Grid>

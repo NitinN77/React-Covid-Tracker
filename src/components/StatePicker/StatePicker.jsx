@@ -21,7 +21,7 @@ function StatePicker({ handleStateChange }) {
     return (
         <FormControl className={styles.formControl}>
             <NativeSelect defaultValue="Tamil Nadu" onChange={(e) => {handleStateChange(e.target.value)}}>
-                <option value=""></option>
+                <option value="">Tamil Nadu</option>
                 {fetchedStates.map((state, i) => <option key={i} value={state}>{state}</option>)}
             </NativeSelect>
         </FormControl>
