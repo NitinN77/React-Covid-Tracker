@@ -13,7 +13,7 @@ function India() {
     const [IData, setIData] = useState([]);
     const [ICardData, setICardData] = useState([]);
     const [stateData, setStateData] = useState([]);
-    const [cstate, setCstate] = useState('Tamil Nadu');
+    const [cstate, setCstate] = useState('');
 
     useEffect(() => {
         const fetchAPI = async () => {
